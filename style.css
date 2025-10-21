@@ -1,0 +1,286 @@
+/* Better contrast & visibility — EOMHI Health Tracker */
+:root {
+  --accent1: #b56bff;
+  --accent2: #7b2ff7;
+  --bg1: #080018;
+  --bg2: #1a003a;
+  --card: #201338;
+  --text-light: #ffffff;
+  --text-muted: #e0d7ff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: radial-gradient(circle at top left, var(--bg2), var(--bg1));
+  color: var(--text-light);
+  font-family: "Poppins", "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 12px rgba(183, 119, 255, 0.4);
+}
+
+/* Input card */
+.input-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+}
+
+/* Metric cards */
+.metric-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 18px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(162, 107, 255, 0.3);
+}
+
+.metric-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.icon {
+  font-size: 2.1rem;
+  padding: 8px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+}
+.icon i {
+  font-size: 2rem;
+}
+.steps .steps-fallback {
+  font-size: 1.8rem;
+  margin-left: 5px;
+}
+
+/* Icon Colors */
+.water {
+  color: #00e5ff;
+}
+.sleep {
+  color: #7fff00;
+}
+.steps {
+  color: #ffd700;
+}
+.calories {
+  color: #ff9100;
+}
+.heart {
+  color: #ff1744;
+}
+.tip {
+  color: #ffee58;
+}
+
+/* Progress bars */
+.progress {
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  transition: width 0.9s ease;
+}
+
+/* Texts inside metric cards */
+.metric-value {
+  margin-top: 8px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.18);
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  color: #fff;
+}
+.metric-note {
+  margin-top: 6px;
+  color: #f8eaff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-height: 20px;
+}
+
+/* Inputs */
+input.form-control {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+input::placeholder {
+  color: #f4e8ff;
+  opacity: 1;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border: none;
+}
+.btn-outline-danger {
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+}
+.btn-outline-danger:hover {
+  background: #ff4d4d;
+  color: #fff;
+}
+.btn-info {
+  background: #00bcd4;
+  border: none;
+}
+
+/* Mood buttons */
+.mood-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.mood-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.mood-btn:hover {
+  transform: scale(1.15);
+}
+
+/* Streak circle */
+.streak-circle {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #ffb86b, #ff6f91);
+  color: #000;
+  display: inline-block;
+}
+
+/* Weekly Planner Cards */
+.week-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.day-card {
+  width: 84px;
+  height: 84px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: transform 0.18s, background 0.18s, box-shadow 0.18s;
+}
+.day-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+}
+.day-card.completed {
+  background: linear-gradient(90deg, #00c9ff, #92fe9d);
+  color: #000;
+  box-shadow: 0 10px 25px rgba(0, 201, 255, 0.3);
+}
+
+/* Water reminder popup */
+.reminder {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .day-card {
+    width: 68px;
+    height: 68px;
+  }
+}
+/* Highlight animation for updated cards */
+.metric-card.updated {
+  animation: glowChange 1s ease-in-out;
+}
+
+@keyframes glowChange {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px #b56bff;
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    transform: scale(1);
+  }
+}
+
+/* Confetti burst */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 2%, transparent 3%) repeat;
+  background-size: 10px 10px;
+  animation: confettiRain 1s ease forwards;
+}
+
+@keyframes confettiRain {
+  from { transform: translateY(-100px) scale(0.8); opacity: 0; }
+  to { transform: translateY(100px) scale(1); opacity: 1; }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Professional Health Tracker • EOMHI</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container py-4">
+
+    <h2 class="text-center mb-3 title">Professional Health Tracker • EOMHI</h2>
+
+    <!-- Top inputs -->
+    <div class="card p-3 mb-3 input-card">
+      <div class="row g-2 align-items-center">
+        <div class="col-auto"><input id="heightInput" class="form-control" placeholder="Height (cm)"></div>
+        <div class="col-auto"><input id="weightInput" class="form-control" placeholder="Weight (kg)"></div>
+        <div class="col-auto"><input id="targetWeightInput" class="form-control" placeholder="Target (kg)"></div>
+
+        <div class="col-auto"><input id="waterInput" class="form-control" placeholder="Water (ml)"></div>
+        <div class="col-auto"><input id="sleepInput" class="form-control" placeholder="Sleep (hr)"></div>
+        <div class="col-auto"><input id="stepsInput" class="form-control" placeholder="Steps"></div>
+
+        <div class="col-auto">
+          <button id="updateBtn" class="btn btn-primary">Update</button>
+        </div>
+
+        <div class="col-auto">
+          <button id="resetBtn" class="btn btn-outline-danger">Reset</button>
+        </div>
+
+        <div class="col-auto">
+          <button id="calcBtn" class="btn btn-info">Smart Suggestion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard cards (2 rows of 3 cards) -->
+    <div class="row g-3" id="dashboard">
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <div class="icon water"><i class="bi bi-droplet-fill"></i></div>
+            <h6>Water Intake</h6>
+          </div>
+          <div class="progress mb-2"><div id="waterBar" class="progress-bar">0%</div></div>
+          <div class="metric-value" id="waterText">0 / 2000 ml</div>
+          <div class="metric-note" id="waterNote"></div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <div class="icon sleep"><i class="bi bi-moon-stars-fill"></i></div>
+            <h6>Sleep Hours</h6>
+          </div>
+          <div class="progress mb-2"><div id="sleepBar" class="progress-bar bg-success">0%</div></div>
+          <div class="metric-value" id="sleepText">0 / 8 hr</div>
+          <div class="metric-note" id="sleepNote"></div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <!-- BOTH: bootstrap icon + emoji fallback to guarantee visibility -->
+            <div class="icon steps">
+              <i class="bi bi-shoe-print-fill" id="stepsIconBootstrap"></i>
+              <span class="steps-fallback">🥾</span>
+            </div>
+            <h6>Steps Walked</h6>
+          </div>
+          <div class="progress mb-2"><div id="stepsBar" class="progress-bar bg-info">0%</div></div>
+          <div class="metric-value" id="stepsText">0 / 10000</div>
+          <div class="metric-note" id="stepsNote"></div>
+        </div>
+      </div>
+
+      <!-- second row -->
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <div class="icon calories"><i class="bi bi-fire"></i></div>
+            <h6>Calories Burned</h6>
+          </div>
+          <div class="metric-value" id="caloriesText">0 kcal</div>
+          <div class="metric-note" id="caloriesNote"></div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <div class="icon heart"><i class="bi bi-heart-fill"></i></div>
+            <h6>Health Status</h6>
+          </div>
+          <div class="metric-value" id="healthText">–</div>
+          <div class="metric-note" id="bmiText">Enter H & W → Smart Suggestion</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="metric-top">
+            <div class="icon tip"><i class="bi bi-lightbulb-fill"></i></div>
+            <h6>Motivation</h6>
+          </div>
+          <div class="metric-value" id="tipText">Be consistent — small steps win.</div>
+          <div class="metric-note" id="goalText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mood / Streak / Weekly planner -->
+    <div class="row g-3 mt-4">
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <h6 class="mb-2">Mood & Tracker</h6>
+          <div class="mood-row">
+            <button class="mood-btn" data-mood="happy">😊</button>
+            <button class="mood-btn" data-mood="neutral">😐</button>
+            <button class="mood-btn" data-mood="tired">😴</button>
+            <button class="mood-btn" data-mood="sad">😔</button>
+          </div>
+          <div class="mt-3">
+            <div>Current mood: <span id="moodText">neutral</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card text-center">
+          <h6>🔥 Fitness Streak</h6>
+          <div class="streak-circle"><span id="streakCount">0</span> days</div>
+          <div class="mt-2 small text-muted">Update daily to keep your streak!</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <h6 class="mb-2">Weekly Planner (card view)</h6>
+          <div id="weekCards" class="week-cards">
+            <!-- JS will fill day-cards -->
+          </div>
+          <div class="mt-2 small text-muted">Click a day to set it as completed (green).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Water reminder popup -->
+    <div id="reminder" class="reminder">💧 Time for a glass of water</div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
