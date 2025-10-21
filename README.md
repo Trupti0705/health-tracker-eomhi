@@ -43,4 +43,4 @@ This project showcases your ability to build **real-world, user-centered front-e
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<Trupti0705>/health-tracker-eomhi.git
+   git clone https://github.com/Trupti0705/health-tracker-eomhi.git
